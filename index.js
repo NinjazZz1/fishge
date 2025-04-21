@@ -14,17 +14,21 @@ let isFishing = false;
 let autoMode = true;
 
 let userLevel = 1;
-let expRequired = 1000;
+let expRequired = 100;
 let userExp = 0;
 
 let currentWeather = "";
+
+let castTime = 5000;
+let simulationSeconds = 0;
+let simulationHours = 0;
 
 let fishPool = [
     {fish: "Carp",              weight: 25, weather: "",     minLevel: 1,  minSize: 10,  maxSize: 30,  baseExp: 10, caught: 0, link: document.querySelector(".carp")},
     {fish: "Trout",             weight: 25, weather: "",     minLevel: 1,  minSize: 15,  maxSize: 25,  baseExp: 10, caught: 0, link: document.querySelector(".trout")},
     {fish: "Silver Anchovy",    weight: 15, weather: "",     minLevel: 1,  minSize: 5,   maxSize: 10,  baseExp: 30, caught: 0, link: document.querySelector(".silver-anchovy")},
     {fish: "Bass",              weight: 10, weather: "",     minLevel: 5,  minSize: 7,   maxSize: 12,  baseExp: 40, caught: 0, link: document.querySelector(".bass")},
-    {fish: "Shark",             weight: 10, weather: "",     minLevel: 5,  minSize: 30,  maxSize: 100, baseExp: 20, caught: 0, link: document.querySelector(".shark")},
+    {fish: "Shark",             weight: 10, weather: "",     minLevel: 5,  minSize: 30,  maxSize: 100, baseExp: 10, caught: 0, link: document.querySelector(".shark")},
     {fish: "Gar",               weight: 5,  weather: "",     minLevel: 10, minSize: 20,  maxSize: 40,  baseExp: 25, caught: 0, link: document.querySelector(".gar")},
     {fish: "Rainbow Trout",     weight: 4,  weather: "rain", minLevel: 15, minSize: 20,  maxSize: 25,  baseExp: 50, caught: 0, link: document.querySelector(".rainbow-trout")},
     {fish: "Rainbow Gar",       weight: 3,  weather: "rain", minLevel: 15, minSize: 25,  maxSize: 35,  baseExp: 45, caught: 0, link: document.querySelector(".rainbow-gar")},
@@ -37,6 +41,9 @@ function startFishing() {
 }
 
 function fish() {
+    simulationSeconds += castTime / 100;
+    simulationHours = (simulationSeconds / 3600).toFixed(2);
+
     let totalWeight = 0;
     for (let i = 0; i < fishPool.length; i++) {
         totalWeight += fishPool[i].weight;
@@ -52,7 +59,7 @@ function fish() {
             if (_fish.minLevel > userLevel) {
                 console.log("The fish gets away...");
                 if (autoMode) { 
-                    startFishing()
+                    startFishing();
                 }
                 return;
             }
@@ -61,7 +68,11 @@ function fish() {
                 if (currentWeather === _fish.weather) {
                     updateStats(_fish, i);
                 } else { 
-                    console.log("The line breaks!") 
+                    console.log("The line breaks!");
+                    if (autoMode) { 
+                        startFishing();
+                    }
+                    return;
                 }
             } else {
                 updateStats(_fish, i);
@@ -74,7 +85,11 @@ function fish() {
 function checkLevel () {
     while (userExp >= expRequired) {
         userLevel++;
-        expRequired = Math.round((expRequired * 1.2));
+        if (userLevel <= 10) {
+            expRequired = Math.round((expRequired * 2) * 1.1);
+        } else {
+            expRequired = Math.round((expRequired * 1.2));
+        }
     }
 }
 
@@ -86,7 +101,7 @@ function updateStats (_fish, id) {
     let expGained = (_fish.baseExp * size);
     userExp += expGained;
     checkLevel();
-    console.log("You caught a " + _fish.fish + " measuring " + size + " lbs! / " + "Level: " + userLevel + " / EXP:" + userExp + "/" + expRequired + "(+" + expGained + ")");
+    console.log("You caught a " + _fish.fish + " measuring " + size + " lbs! / " + "Level: " + userLevel + " / EXP:" + userExp + "/" + expRequired + "(+" + expGained + ")" + " Playtime: " + simulationHours);
     
     totalFishCaught++;
     amountToFish--;
