@@ -1,4 +1,7 @@
 const fishingButton = document.querySelector(".button");
+const logText = document.querySelector(".fish-log");
+const levelText = document.querySelector(".level");
+
 
 fishingButton.addEventListener("click", function() {
     if(isFishing === false) {
@@ -21,6 +24,10 @@ let currentWeather = "";
 let castTime = 5000;
 let simulationSeconds = 0;
 let simulationHours = 0;
+
+let defaultLogText = "Press the 'Start Fishing' button to fish!";
+
+logText.innerHTML = defaultLogText;
 
 let fishPool = [
     {fish: "Carp",              weight: 25, weather: "", minLevel: 1,  minSize: 10,  maxSize: 30, minBiteTime:5, maxBiteTime: 15,  baseExp: 2,  caught: 0, link: document.querySelector(".carp")},
@@ -81,11 +88,12 @@ function selectFishFromPool() {
 }
 
 function beginReelIn (_fish, id) {
-
     let size = (Math.random() * (_fish.maxSize - _fish.minSize) + _fish.minSize).toFixed(2);
     castTime = Math.round((Math.random() * (_fish.maxBiteTime - _fish.minBiteTime) + _fish.minBiteTime) * 1000);
 
     /* GAMEPLAY LOGIC WILL GO HERE */
+
+    logText.innerHTML = "You cast out your line...";
 
     setTimeout(function() { 
         updateStats(_fish, size, id);
@@ -94,12 +102,13 @@ function beginReelIn (_fish, id) {
 
 function updateStats (_fish, _size, id) {
     _fish.caught++;
-    _fish.link.innerHTML = fishPool[id].caught;
+    _fish.link.innerHTML = _fish.fish + " | " + fishPool[id].caught;
 
     let expGained = Math.round((_fish.baseExp * _size));
     userExp += expGained;
     checkLevel();
     totalFishCaught++;
+    logText.innerHTML = "You caught a " + _fish.fish + " measuring " + _size + " lbs";
     console.log("You caught a " + _fish.fish + " measuring " + _size + " lbs! / " + "Level: " + userLevel + " / EXP:" + userExp + "/" + expRequired + "(+" + expGained + ")" + "/ Total Fish Caught: " + totalFishCaught + " / Playtime: " + simulationHours);
     isFishing = false;
 
@@ -110,9 +119,10 @@ function updateStats (_fish, _size, id) {
     return;
 }
 
-function checkLevel () {
+function checkLevel () {   
     while (userExp >= expRequired) {
         userLevel++;
         expRequired = Math.round((expRequired + 100) * 1.1);
     }
+    levelText.innerHTML = "Level: " + userLevel + " | EXP: " + userExp + " / " + expRequired;
 }
