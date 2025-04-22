@@ -7,71 +7,80 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="element">
         <h1>Fishge</h1>
     </header>
-    <div class="game">
+    <div class="game element">
         <button class="button">Cast</button>
     </div> 
-    <div class="log log-container">
+    <div class="log log-container element">
         <h2>Log</h2>
         <div class="fish-img">
-            <img src="/images/silver_anchovy.png" alt="A Reference image" class="spin">
+            <img src="/images/rod.png" alt="A Reference image" class="spin" id="log-fish">
         </div>
         <h3 class="fish-log">Waiting for action...</h3>
     </div> 
-    <div class="stats">
+    <div class="stats element">
         <h2>Stats</h2>
         <h3 class="level">Level: 1 | EXP: 0/100</h3>
+        <h3 class="caught">Fish caught: 0</h3>
     </div>
-    <div class="collection">
+    <div class="weather element">
+        <h2>Weather</h2>
+        <h3>WIP</h3>
+    </div>
+    <div class="previous-fish element">
+        <h2>Previous Fish</h2>
+        <img src="" alt="" class="spin previous">
+    </div>
+    <div class="collection element">
         <h2>Collection</h2>
         <ul>
             <li>
                 <p class="carp">Carp | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/carp.png" alt="a carp" id="carp">
             </li>
             <li>
                 <p class="trout">Trout | 0</p>
-                <img src="/images/trout.png" alt="a carp">
+                <img src="/images/trout.png" alt="a trout" id="trout">
             </li>
             <li>
                 <p class="silver-anchovy">Silver Anchovy | 0</p>
-                <img src="/images/silver_anchovy.png" alt="a carp">
+                <img src="/images/silver_anchovy.png" alt="a silver anchovy" id="silver-anchovy">
             </li>
             <li>
                 <p class="bass">Bass | 0</p>
-                <img src="/images/bass.png" alt="a carp">
+                <img src="/images/bass.png" alt="a bass" id="bass">
             </li>
             <li>
                 <p class="shark">Shark | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/shark.png" alt="a shark" id="shark">
             </li>
             <li>
                 <p class="gar">Gar | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/gar.png" alt="a gar" id="gar">
             </li>
             <li>
                 <p class="rainbow-trout">Rainbow Trout | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/rainbow_trout.png" alt="a rainbow trout" id="rainbow-trout">
             </li>
             <li>
                 <p class="rainbow-gar">Rainbow Gar | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/rainbow_gar.png" alt="a rainbow gar" id="rainbow-gar">
             </li>
             <li>
                 <p class="great-white">Great White | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/great_white.png" alt="a great-white" id="great-white">
             </li>
             <li>
                 <p class="the-ruby-dragon">The Ruby Dragon | 0</p>
-                <img src="/images/carp.png" alt="a carp">
+                <img src="/images/the_ruby_dragon.png" alt="a ruby dragon" id="the-ruby-dragon">
             </li>
         </ul>     
     </div>
     </main>
-    <footer>
-        By NinjazZz
+    <footer class="element">
+        <h3>By NinjazZz</h3>
     </footer>
 </body>
 <script src="index.js"></script>
