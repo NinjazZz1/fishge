@@ -89,7 +89,7 @@ function expTest() {
 }
 
 function startFishing() {
-    logFish.src = "/images/rod.png";
+    logFish.src = "./images/rod.png";
     selectFishFromPool();
 }
 
