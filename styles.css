@@ -90,11 +90,15 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 300px;
+    max-width: 400px;
     max-height: 50px;
     background-color: white;
     border-radius: 25px;
     padding: 8px;
+}
+
+.element.button {
+    padding: 36px;
 }
 
 .right-items {
