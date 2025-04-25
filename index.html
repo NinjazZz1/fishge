@@ -3,112 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fishge</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="element">
-        <h1>Fishge</h1>
-    </header>
-    <div class="game element">
-        <button class="button">Cast</button>
-    </div> 
-    <div class="log log-container element">
-        <h2>Log</h2>
-        <h3 class="fish-log-active">Waiting for action...</h3>
-        <div class="fish-img">
-            <img src="./images/rod.png" alt="A Reference image" class="spin" id="log-fish">
-        </div>
-        <h3 class="fish-log">Waiting for action...</h3>
-    </div> 
-    <div class="stats element">
-        <h2>Stats</h2>
-        <h3 class="level">Level: 1 | EXP: 0/100</h3>
-        <h3 class="caught">Fish caught: 0</h3>
-        <h3 class="cash">Cash: $0</h3>
+    <div class="container">
+        <header>
+            <div class="left-items">
+                <h1 class="logo">Fishge</h1>
+            </div>
+            <div class="right-items">
+                <button class="element button">
+                    <p>Start Fishing</p>
+                </button>
+                <div class="element">
+                    <p class="cash">$ 0</p>
+                </div>
+                <div class="element">
+                    <p class="level">Level: 1</p>
+                </div>
+                <div class="element">
+                    <p>Exp: 0/100</p>
+                </div>
+                <div class="element">
+                    <p class="caught">Fish Caught: 0</p>
+                </div>
+                <div class="element">
+                    <p class="weather">Clear Skies</p>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="nav">
+                    <h2>Navigation</h2>
+                </div>
+                <div class="log">
+                    <h2>The Grand Ocean</h2>
+                    <h3 class="fish-log-active">Something glistens in the water...</h3>
+                    <div class="fish-img">
+                        <img src="../images/rod.png" alt="a rod" id="log-fish" class="spin">
+                    </div>
+                    <h3 class="fish-log">You Caught ...</h3>
+                </div>
+                <div class="right-container">
+                    <div class="collection">
+                        <h2>Collection</h2> 
+                        <div class="cards">
+                            <div class="card">
+                                <p>Carp</p>
+                                <img src="../images/carp.png" alt="a carp" id="carp">
+                                <p class="carp">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Trout</p>
+                                <img src="../images/trout.png" alt="a trout" id="trout">
+                                <p class="trout">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Silver Anchovy</p>
+                                <img src="../images/silver_anchovy.png" alt="silver anchovy" id="silver-anchovy">
+                                <p class="silver-anchovy">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Bass</p>
+                                <img src="../images/bass.png" alt="Bass" id="bass">
+                                <p class="bass">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Shark</p>
+                                <img src="../images/shark.png" alt="shark" id="shark">
+                                <p class="shark">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Gar</p>
+                                <img src="../images/gar.png" alt="a gar" id="gar">
+                                <p class="gar">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Rainbow Trout</p>
+                                <img src="../images/rainbow_trout.png" alt="a rainbow trout" id="rainbow-trout">
+                                <p class="rainbow-trout">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Rainbow Gar</p>
+                                <img src="../images/rainbow_gar.png" alt="a rainbow gar" id="rainbow-gar">
+                                <p class="rainbow-gar">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Rainbow Bass</p>
+                                <img src="../images/rainbow_bass.png" alt="a rainbow bass" id="rainbow-bass">
+                                <p class="rainbow-bass">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Great White</p>
+                                <img src="../images/great_white.png" alt="a great-white" id="great-white">
+                                <p class="great-white">0</p>
+                            </div>
+                            <div class="card">
+                                <p>The Ruby Dragon</p>
+                                <img src="../images/the_ruby_dragon.png" alt="a ruby dragon" id="the-ruby-dragon">
+                                <p class="the-ruby-dragon">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Prismatic Anchovy</p>
+                                <img src="../images/prismatic_anchovy.png" alt="a prismatic anchovy" id="prismatic-anchovy">
+                                <p class="prismatic-anchovy">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Prismatic Bass</p>
+                                <img src="../images/prismatic_bass.png" alt="a prismatic bass" id="prismatic-bass">
+                                <p class="prismatic-bass">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Prismatic Carp</p>
+                                <img src="../images/prismatic_carp.png" alt="a prismatic carp" id="prismatic-carp">
+                                <p class="prismatic-carp">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Prismatic Gar</p>
+                                <img src="../images/prismatic_gar.png" alt="a prismatic gar" id="prismatic-gar">
+                                <p class="prismatic-gar">0</p>
+                            </div>
+                            <div class="card">
+                                <p>Prismatic Shark</p>
+                                <img src="../images/prismatic_shark.png" alt="a prismatic shark" id="prismatic-shark">
+                                <p class="prismatic-shark">0</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="best-catch">
+                        <h2>Best Catch</h2>
+                        <div class="fish-img">
+                            <img src="../images/rainbow_gar.png" alt="a rainbow gar" class="previous spin">
+                        </div>
+                        <h3 class="fish-log-best">Rainbow Gar | 50.00 lbs | $75.00</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <h2>By NinjazZz</h2>
+        </footer>
     </div>
-    <div class="weather-class element">
-        <h2>Weather</h2>
-        <h3 class="weather"></h3>
-    </div>
-    <div class="previous-fish element">
-        <h2>Best Catch</h2>
-        <img src="" alt="" class="spin previous">
-        <h3 class="fish-log-best">Carp | 240 lbs | $1000</h3>
-    </div>
-    <div class="collection element">
-        <h2>Collection</h2>
-        <ul>
-            <li>
-                <p class="carp">Carp | 0</p>
-                <img src="./images/carp.png" alt="a carp" id="carp">
-            </li>
-            <li>
-                <p class="trout">Trout | 0</p>
-                <img src="./images/trout.png" alt="a trout" id="trout">
-            </li>
-            <li>
-                <p class="silver-anchovy">Silver Anchovy | 0</p>
-                <img src="./images/silver_anchovy.png" alt="a silver anchovy" id="silver-anchovy">
-            </li>
-            <li>
-                <p class="bass">Bass | 0</p>
-                <img src="./images/bass.png" alt="a bass" id="bass">
-            </li>
-            <li>
-                <p class="shark">Shark | 0</p>
-                <img src="./images/shark.png" alt="a shark" id="shark">
-            </li>
-            <li>
-                <p class="gar">Gar | 0</p>
-                <img src="./images/gar.png" alt="a gar" id="gar">
-            </li>
-            <li>
-                <p class="rainbow-trout">Rainbow Trout | 0</p>
-                <img src="./images/rainbow_trout.png" alt="a rainbow trout" id="rainbow-trout">
-            </li>
-            <li>
-                <p class="rainbow-gar">Rainbow Gar | 0</p>
-                <img src="./images/rainbow_gar.png" alt="a rainbow gar" id="rainbow-gar">
-            </li>
-            <li>
-                <p class="rainbow-bass">Rainbow Bass | 0</p>
-                <img src="./images/rainbow_bass.png" alt="a rainbow bass" id="rainbow-bass">
-            </li>
-            <li>
-                <p class="great-white">Great White | 0</p>
-                <img src="./images/great_white.png" alt="a great-white" id="great-white">
-            </li>
-            <li>
-                <p class="the-ruby-dragon">The Ruby Dragon | 0</p>
-                <img src="./images/the_ruby_dragon.png" alt="a ruby dragon" id="the-ruby-dragon">
-            </li>
-            <li>
-                <p class="prismatic-anchovy">Prismatic Anchovy | 0</p>
-                <img src="./images/prismatic_anchovy.png" alt="a prismatic anchovy" id="prismatic-anchovy">
-            </li>
-            <li>
-                <p class="prismatic-bass">Prismatic Bass | 0</p>
-                <img src="./images/prismatic_bass.png" alt="a prismatic bass" id="prismatic-bass">
-            </li>
-            <li>
-                <p class="prismatic-carp">Prismatic Carp | 0</p>
-                <img src="./images/prismatic_carp.png" alt="a prismatic carp" id="prismatic-carp">
-            </li>
-            <li>
-                <p class="prismatic-gar">Prismatic Gar | 0</p>
-                <img src="./images/prismatic_gar.png" alt="a prismatic gar" id="prismatic-gar">
-            </li>
-            <li>
-                <p class="prismatic-shark">Prismatic Shark | 0</p>
-                <img src="./images/prismatic_shark.png" alt="a prismatic shark" id="prismatic-shark">
-            </li>
-        </ul>     
-    </div>
-    </main>
-    <footer class="element">
-        <h3>By NinjazZz</h3>
-    </footer>
 </body>
-<script src="index.js"></script>
+<script src="../index.js"></script>
 </html>

@@ -1,14 +1,13 @@
 # fishge
-FISHGE V0.1
+FISHGE V0.2
 
-This is my first project i've created on my own for fun! It is a smal webfishing game where you try to catch all the fish in pond to try level up.
+This is my first project i've created on my own for fun! It is a small webfishing game where you try to catch all the fish in pond to try level up.
 
 UI 
-- Press 'Cast' to begin the auto fishing process and watch as you catch fish battling rng.
+- Press 'Start Fishing' to begin the auto fishing process and watch as you catch fish battling rng.
 - The 'Collection' tab shows all fish with the amount of times you have caught them.
-- The 'Log' window with the rod is the main tab showing you cast out and fish caught.
+- The 'The Grand Ocean' window with the rod is the main tab showing you cast out and fish caught.
 - The 'Best Catch' will show the best fish you caught by value.
-- The 'Stats' window will show you your level, exp required for next level and cash.
 
 HOW IT WORKS
 
