@@ -5,6 +5,17 @@
     padding: 0px; 
 }
 
+:root {
+    --active: #00ff2a;
+    --inactive: #ff0000;
+
+    --common: hsl(0, 5%, 55%);
+    --uncommon: hsl(140, 70%, 28%);
+    --rare: hsl(199, 73%, 35%);
+    --legendary: hsl(305, 73%, 35%);
+    --epic: hsl(54, 61%, 50%);
+}
+
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     box-sizing: border-box;
@@ -26,6 +37,7 @@ body > .container {
 main > .container {
     display: flex;
     height: 100%;
+    height: 88vh
 }
 
 header, 
@@ -34,6 +46,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header {
+    height: 7vh;
+}
+
+footer {
+    height: 5vh;
 }
 
 main {
@@ -142,6 +162,8 @@ p {
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
+    overflow-y: auto;
+    max-height: 40vh;
 }
 
 .right-container {
@@ -162,6 +184,10 @@ ul {
 .fish-img > img {
     max-width: 60%; 
     height: auto;
+}
+
+.auto-button {
+    background-color: var(--inactive);
 }
 
 .log > .fish-img > img {
