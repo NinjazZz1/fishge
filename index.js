@@ -106,7 +106,7 @@ function expTest() {
 }
 
 function startFishing() {
-    logFish.src = "../images/rod.png";
+    logFish.src = "/images/rod.png";
     fishingButton.style.visibility = "hidden";
     selectFishFromPool();
 }
@@ -161,7 +161,7 @@ function beginReelIn (_fish, id) {
 
     setTimeout(function() { 
         updateStats(_fish, size, id);
-    }, castTime / 3);
+    }, castTime / 9);
 }
 
 function updateStats (_fish, _size, id) {
@@ -220,7 +220,7 @@ function checkAuto() {
         isFishing = true;
         setTimeout(function() { 
             startFishing();
-        }, 2000);
+        }, 2000 / 9);
     }
 }
 
