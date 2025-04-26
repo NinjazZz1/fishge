@@ -170,6 +170,8 @@ function updateStats (_fish, _size, id) {
     {
         console.log("The fish got away with a evasion of " + _fish.evasion + " against " + slipChance);
         logFishActive.innerHTML = "The fish gets away...";
+        fishingButton.style.visibility = "visible";
+        isFishing = false;
         checkAuto()
         return;
     }
