@@ -36,6 +36,7 @@ autoButton.addEventListener("click", function() {
     }
 });
 
+
 let totalFishCaught = 0;
 
 let isFishing = false;
@@ -67,105 +68,85 @@ let textMinutes = minutes.toString().padStart(2, "0");
 timeText.innerHTML = textHours + ":" + textMinutes;
 //console.log(hours + ":" + minutes);
 
-let fishPool = [
-    {fish: "Carp",              type: "common", weight: 20, weather: "", minLevel: 1,  minSize: 10,  maxSize: 30, minBiteTime:5, maxBiteTime: 15, evasion: 0,  baseExp: 2, baseValue: 0.1, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/carp.png", ftext: ""},
-    {fish: "Trout",             type: "common", weight: 15, weather: "", minLevel: 2,  minSize: 15,  maxSize: 35, minBiteTime:7, maxBiteTime: 13, evasion: 0, baseExp: 2, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/trout.png", ftext: ""},
-    {fish: "Silver Anchovy",    type: "common", weight: 15, weather: "", minLevel: 5,  minSize: 3,   maxSize: 12, minBiteTime:4, maxBiteTime: 13, evasion: 0, baseExp: 6, baseValue: 0.05,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/silver_anchovy.png", ftext: ""},
-    {fish: "Bass",              type: "uncommon", weight: 15, weather: "", minLevel: 7,  minSize: 4,   maxSize: 16, minBiteTime:10, maxBiteTime: 15, evasion: 84, baseExp: 5, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/bass.png", ftext: ""},
-    {fish: "Shark",             type: "uncommon", weight: 10, weather: "", minLevel: 9, minSize: 50,  maxSize: 100, minBiteTime:20, maxBiteTime: 25, evasion: 135, baseExp: 1, baseValue: 0.3,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/shark.png", ftext: "Something big awaits..."},
-    {fish: "Gar",               type: "rare", weight: 12.5,  weather: "", minLevel: 12, minSize: 22,  maxSize: 30, minBiteTime:15, maxBiteTime: 25, evasion: 168, baseExp: 3, baseValue: 0.15,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/gar.png", ftext: ""},
-    {fish: "Rainbow Trout",     type: "rare", weight: 12.5,  weather: "", minLevel: 14, minSize: 15,  maxSize: 35, minBiteTime:15, maxBiteTime: 20, evasion: 210, baseExp: 10, baseValue: 0.1, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_trout.png", ftext: "Something glistens in the water...."},
-    {fish: "Rainbow Gar",       type: "legendary", weight: 15, weather: "Heavy Rain", minLevel: 16, minSize: 20,  maxSize: 45, minBiteTime:20, maxBiteTime: 30, evasion: 180, baseExp: 8, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_gar.png", ftext: "Something glistens in the water...."},
-    {fish: "Rainbow Bass",      type: "legendary", weight: 15, weather: "Snow", minLevel: 18, minSize: 5,  maxSize: 25, minBiteTime:20, maxBiteTime: 30, evasion: 200, baseExp: 25, baseValue: 0.07,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_bass.png", ftext: "Something glistens in the water...."},
-    {fish: "Great White",       type: "legendary", weight: 15, weather: "Stormy", minLevel: 20, minSize: 100, maxSize: 300, minBiteTime:30, maxBiteTime: 40, evasion: 300, baseExp: 1, baseValue: 0.15,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/great_white.png", ftext: "Something big awaits..."},
-    {fish: "The Ruby Dragon",   type: "legendary", weight: 5,  weather: "Fog", minLevel: 10, minSize: 150, maxSize: 500, minBiteTime:27, maxBiteTime: 33, evasion: 180, baseExp: 5, baseValue: 0.05,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/the_ruby_dragon.png", ftext: "A beast approaches...."},
-    {fish: "Prismatic Anchovy", type: "epic",weight: 1,  weather: "Eclipse", minLevel: 10, minSize: 4, maxSize: 15, minBiteTime:15, maxBiteTime: 17, evasion: 200, baseExp: 200, baseValue: 0.02,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_anchovy.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Bass",    type: "epic", weight: 1,  weather: "Fair Skies", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:20, maxBiteTime: 25, evasion: 200, baseExp: 175, baseValue: 0.025,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_bass.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Carp",    type: "epic", weight: 1,  weather: "Clear Skies", minLevel: 10, minSize: 12, maxSize: 35, minBiteTime:10, maxBiteTime: 15, evasion: 200, baseExp: 75, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Gar",     type: "epic", weight: 1,  weather: "Windy", minLevel: 10, minSize: 15, maxSize: 50, minBiteTime:30, maxBiteTime: 32, evasion: 200, baseExp: 75, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Shark",   type: "epic", weight: 1,  weather: "Blizzards", minLevel: 10, minSize: 45, maxSize: 450, minBiteTime:40, maxBiteTime: 50, evasion: 200, baseExp: 10, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_shark.png", ftext: "An unusual fish challenges the line..."},
-];
-
 let cardList = [];
 
+let fishPool = [
+    {fish: "Carp",              type: "common", weight: 25, weather: "", minLevel: 1,  minSize: 10,  maxSize: 30, minBiteTime:5, maxBiteTime: 15, evasion: 0,  baseExp: 2, baseValue: 0.1, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/carp.png", ftext: ""},
+    {fish: "Crab",              type: "common", weight: 30, weather: "", minLevel: 1,  minSize: 7,  maxSize: 15, minBiteTime:3, maxBiteTime: 8, evasion: 0,  baseExp: 2, baseValue: 0.15, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/crab.png", ftext: ""},
+    {fish: "Trout",             type: "common", weight: 20, weather: "", minLevel: 3,  minSize: 15,  maxSize: 35, minBiteTime:7, maxBiteTime: 13, evasion: 0, baseExp: 2, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/trout.png", ftext: ""},
+    {fish: "Silver Anchovy",    type: "common", weight: 25, weather: "", minLevel: 3,  minSize: 12,   maxSize: 12, minBiteTime:4, maxBiteTime: 6, evasion: 0, baseExp: 3, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/silver_anchovy.png", ftext: ""},
+    {fish: "Bass",              type: "uncommon", weight: 15, weather: "", minLevel: 5,  minSize: 8,   maxSize: 16, minBiteTime:10, maxBiteTime: 15, evasion: 0, baseExp: 8, baseValue: 0.13,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/bass.png", ftext: ""},
+    {fish: "Eel",               type: "uncommon", weight: 10, weather: "", minLevel: 7,  minSize: 4,   maxSize: 18, minBiteTime:5, maxBiteTime: 15, evasion: 20, baseExp: 10, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/eel.png", ftext: "Something darts through the waves!"},
+    {fish: "Red Herring",       type: "uncommon", weight: 15, weather: "", minLevel: 10,  minSize: 4,   maxSize: 8, minBiteTime:3, maxBiteTime: 9, evasion: 10, baseExp: 15, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/red_herring.png", ftext: ""},
+    {fish: "Shark",             type: "rare", weight: 10, weather: "", minLevel: 10, minSize: 50,  maxSize: 100, minBiteTime:20, maxBiteTime: 25, evasion: 50, baseExp: 2, baseValue: 0.1,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/shark.png", ftext: "Something big awaits..."},
+    {fish: "Gar",               type: "rare", weight: 12.5,  weather: "", minLevel: 12, minSize: 22,  maxSize: 30, minBiteTime:10, maxBiteTime: 15, evasion: 30, baseExp: 8, baseValue: 0.09,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/gar.png", ftext: ""},
+    {fish: "Rainbow Trout",     type: "rare", weight: 12.5,  weather: "", minLevel: 14, minSize: 15,  maxSize: 35, minBiteTime:15, maxBiteTime: 20, evasion: 30, baseExp: 10, baseValue: 0.07, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_trout.png", ftext: "Something glistens in the water...."},
+    {fish: "Tiger Moray Eel",   type: "rare", weight: 12.5,  weather: "", minLevel: 16, minSize: 8,  maxSize: 20, minBiteTime:10, maxBiteTime: 25, evasion: 100, baseExp: 13, baseValue: 0.13, caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/tiger_moray_eel.png", ftext: "Something darts through the waves!"},
+    {fish: "Rainbow Gar",       type: "legendary", weight: 3, weather: "", minLevel: 18, minSize: 20,  maxSize: 45, minBiteTime:20, maxBiteTime: 35, evasion: 70, baseExp: 8, baseValue: 0.14,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_gar.png", ftext: "Something glistens in the water...."},
+    {fish: "Rainbow Bass",      type: "legendary", weight: 3, weather: "", minLevel: 20, minSize: 5,  maxSize: 25, minBiteTime:17, maxBiteTime: 30, evasion: 70, baseExp: 25, baseValue: 0.12,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_bass.png", ftext: "Something glistens in the water...."},
+    {fish: "Great White",       type: "legendary", weight: 15, weather: "Stormy", minLevel: 10, minSize: 100, maxSize: 300, minBiteTime:30, maxBiteTime: 40, evasion: 90, baseExp: 1, baseValue: 0.25,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/great_white.png", ftext: "Something big awaits..."},
+    {fish: "The Ruby Dragon",   type: "legendary", weight: 5,  weather: "Fog", minLevel: 10, minSize: 150, maxSize: 500, minBiteTime:27, maxBiteTime: 33, evasion: 100, baseExp: 5, baseValue: 0.04,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/the_ruby_dragon.png", ftext: "A beast approaches...."},
+    {fish: "Prismatic Anchovy", type: "epic", weight: 1,  weather: "Eclipse", minLevel: 10, minSize: 4, maxSize: 15, minBiteTime:15, maxBiteTime: 17, evasion: 100, baseExp: 200, baseValue: 0.034,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_anchovy.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Bass",    type: "epic", weight: 1,  weather: "Fair Skies", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:20, maxBiteTime: 25, evasion: 100, baseExp: 175, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_bass.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Carp",    type: "epic", weight: 1,  weather: "Clear Skies", minLevel: 10, minSize: 12, maxSize: 35, minBiteTime:10, maxBiteTime: 15, evasion: 50, baseExp: 75, baseValue: 0.04,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Gar",     type: "epic", weight: 1,  weather: "Windy", minLevel: 10, minSize: 15, maxSize: 50, minBiteTime:30, maxBiteTime: 32, evasion: 100, baseExp: 75, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Shark",   type: "epic", weight: 1,  weather: "Blizzards", minLevel: 15, minSize: 45, maxSize: 450, minBiteTime:40, maxBiteTime: 50, evasion: 150, baseExp: 10, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_shark.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Crab",    type: "epic", weight: 1,  weather: "Heavy Rain", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:10, maxBiteTime: 20, evasion: 100, baseExp: 200, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_crab.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Eel",     type: "epic", weight: 1,  weather: "Snow", minLevel: 10, minSize: 10, maxSize: 20, minBiteTime:25, maxBiteTime: 35, evasion: 100, baseExp: 150, baseValue: 0.04,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_eel.png", ftext: "An unusual fish challenges the line..."},
+];
+
 runTests();
-
-// testing for adding elements HTML
-
-let testAmount = 10;
-
-for (let i = 0; i < fishPool.length; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    const para = document.createElement("p");
-    para.innerHTML = "???";
-    card.appendChild(para);
-
-    const image = document.createElement("img");
-    image.src = "./images/unknown.png";
-    image.alt = "???";
-    image.id = "???";
-
-    const number = document.createElement("p");
-    number.classList.add("Test");
-    number.innerHTML = fishPool[i].caught;
-
-    const cards = document.querySelector(".cards");
-
-    let type = "var(--" + fishPool[i].type + ")";
-    if (fishPool[i].type == "epic") {
-        card.classList.add("epic");
-    }
-
-    cards.appendChild(card);
-    card.appendChild(image);
-    card.append(number);
+setupCards();
 
 
+function setupCards () {
 
-    card.style.setProperty("background-color", type);
-
-
-    const myCard = {"container": card, "name": para, "icon": image, "amount": number};
-
-    cardList.push(myCard);
-}
-
-
-function runTests() {
-    //moneyTest();
-    //expTest();
-    checkCards();
-}
-
-function moneyTest() {
-    /* USE FOR MONEY BALANCE */
-    console.log("$");
     for (let i = 0; i < fishPool.length; i++) {
-    let minExp = fishPool[i].minSize  * fishPool[i].baseValue * fishPool[i].baseExp;
-    let maxExp = fishPool[i].maxSize  * fishPool[i].baseValue * fishPool[i].baseExp;
-    let averageExp = (fishPool[i].maxSize + fishPool[i].minSize) / 2 * fishPool[i].baseValue * fishPool[i].baseExp;
-    console.log(fishPool[i].fish, "$" + minExp.toFixed(2), "$" + averageExp.toFixed(2), "$" + maxExp.toFixed(2));
-    } 
-}
-
-function expTest() {
-    /* USE FOR TESTING EXP BALANCE */
-    console.log("EXP");
-    for (let i = 0; i < fishPool.length; i++) {
-        let minExp = fishPool[i].minSize * fishPool[i].baseExp;
-        let maxExp = fishPool[i].maxSize * fishPool[i].baseExp;
-        let averageExp = (fishPool[i].maxSize + fishPool[i].minSize) / 2 * fishPool[i].baseExp;
-        console.log(fishPool[i].fish, minExp, averageExp, maxExp);
+        const card = document.createElement("div");
+        card.classList.add("card");
+    
+        const para = document.createElement("p");
+        para.innerHTML = "???";
+        card.appendChild(para);
+    
+        const image = document.createElement("img");
+        image.src = "./images/unknown.png";
+        image.alt = "???";
+        image.id = "???";
+    
+        const number = document.createElement("p");
+        number.classList.add("Test");
+        number.innerHTML = fishPool[i].caught;
+    
+        const cards = document.querySelector(".cards");
+    
+        let type = "var(--" + fishPool[i].type + ")";
+        if (fishPool[i].type == "epic") {
+            card.classList.add("epic");
+        }
+    
+        cards.appendChild(card);
+        card.appendChild(image);
+        card.append(number);
+    
+    
+    
+        card.style.setProperty("background-color", type);
+    
+    
+        const myCard = {"container": card, "name": para, "icon": image, "amount": number};
+    
+        cardList.push(myCard);
     }
-
 }
 
 function startFishing() {
     logFish.src = "./images/rod.png";
     mainBox.style.setProperty("background-color", "var(--common)");
     fishingButton.style.visibility = "hidden";
+    if (mainBox.matches(".epic")) {
+        mainBox.classList.remove("epic");
+    }
     selectFishFromPool();
 }
 
@@ -196,12 +177,12 @@ function beginReelIn (_fish, id) {
     }
 
     setTimeout(function() { 
-        updateStats(_fish, size, id);
+        fishHooked(_fish, size, id);
     }, castTime);
 }
 
-function updateStats (_fish, _size, id) {
-    let slipChance = (Math.random() * strength) + strength;
+function fishHooked (_fish, _size, id) {
+    let slipChance = (Math.random() * strength);
     //console.log(slipChance);
     if (slipChance < _fish.evasion)
     {
@@ -214,6 +195,7 @@ function updateStats (_fish, _size, id) {
         return;
     }
 
+    logFishActive.innerHTML = "Fish Caught!";
     if (cardList[id].name.innerHTML == "???") {
         cardList[id].name.innerHTML = _fish.fish;
         cardList[id].icon.src = _fish.image;
@@ -223,7 +205,12 @@ function updateStats (_fish, _size, id) {
     //_fish.link.innerHTML = fishPool[id].caught;
     cardList[id].amount.innerHTML = fishPool[id].caught;
     let type = "var(--" + fishPool[id].type + ")";
-    mainBox.style.setProperty("background-color", type);
+
+    if (_fish.type == "epic") {
+        mainBox.classList.add("epic");
+    } else {
+        mainBox.style.setProperty("background-color", type);
+    }
 
     let expGained = (_fish.baseExp * _size);
     userExp += Math.round(expGained);
@@ -238,7 +225,16 @@ function updateStats (_fish, _size, id) {
         bestCatchValue = fishValue;
         bestCatchText.innerHTML = _fish.fish + " | " + _size + " lbs | $" + fishValue.toFixed(2); 
         previousFish.src = fishPool[id].image;
-        bestBox.style.setProperty("background-color", type);
+        logFishActive.innerHTML = "New Best Fish!";
+
+        if (_fish.type == "epic") {
+            bestBox.classList.add("epic");
+        } else {
+            if (bestBox.matches(".epic")) {
+                bestBox.classList.remove("epic");
+            }
+            bestBox.style.setProperty("background-color", type);
+        }
     }
 
     logText.innerHTML = "You caught a " + _fish.fish + " measuring " + _size + " lbs worth $" + fishValue.toFixed(2);
@@ -328,13 +324,42 @@ function updateTime() {
 
 function updateWeather() {
     let weatherToChoose = Math.round(Math.random() * weatherList.length);
-    if (weatherToChoose == currentWeather || weatherToChoose == "undefined") {
-        updateWeather();
-        return;
+    if (weatherList[weatherToChoose] == currentWeather || weatherToChoose >= weatherList.length) {
+        return updateWeather();
+        
     }
     currentWeather = weatherList[weatherToChoose];
     //console.log("Weather is now " + currentWeather);
     weatherText.innerHTML = currentWeather;
     logFishActive.innerHTML = "Weather is now " + currentWeather;
+}
+
+function runTests() {
+    moneyTest();
+    expTest();
+    checkCards();
+}
+
+function moneyTest() {
+    /* USE FOR MONEY BALANCE */
+    console.log("$");
+    for (let i = 0; i < fishPool.length; i++) {
+    let minExp = fishPool[i].minSize  * fishPool[i].baseValue * fishPool[i].baseExp;
+    let maxExp = fishPool[i].maxSize  * fishPool[i].baseValue * fishPool[i].baseExp;
+    let averageExp = (fishPool[i].maxSize + fishPool[i].minSize) / 2 * fishPool[i].baseValue * fishPool[i].baseExp;
+    console.log(fishPool[i].fish, "$" + minExp.toFixed(2), "$" + averageExp.toFixed(2), "$" + maxExp.toFixed(2));
+    } 
+}
+
+function expTest() {
+    /* USE FOR TESTING EXP BALANCE */
+    console.log("EXP");
+    for (let i = 0; i < fishPool.length; i++) {
+        let minExp = fishPool[i].minSize * fishPool[i].baseExp;
+        let maxExp = fishPool[i].maxSize * fishPool[i].baseExp;
+        let averageExp = (fishPool[i].maxSize + fishPool[i].minSize) / 2 * fishPool[i].baseExp;
+        console.log(fishPool[i].fish, minExp, averageExp, maxExp);
+    }
+
 }
 
