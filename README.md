@@ -13,11 +13,10 @@ HOW IT WORKS
 
 - When you cast out your line, a fish will be chosen in a weighted loot table. Then that fish will be a random size depeding on it's min and max size.
 - The value and exp of the fish depends on the size of that fish and how rare it is.
-- Some fish will only be obtainable during specific weather.
+- Some fish will only be obtainable during specific weather or time.
 - fish have a chance to get away.
 - The weather will change at 08:00, 16:00 and 00:00 according to the time at the top right.
 
 BUGS 
 
-- Sometimes weather changes to 'undefined'.
 - When window is too small, segments will overlap.
