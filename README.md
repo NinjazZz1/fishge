@@ -1,5 +1,5 @@
 # fishge
-FISHGE V0.25
+FISHGE V0.3
 
 This is my first project i've created on my own for fun! It is a small webfishing game where you try to catch all the fish in pond to try level up.
 
