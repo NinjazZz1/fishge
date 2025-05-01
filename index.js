@@ -48,6 +48,8 @@ let userExp = 0;
 let userCash = 0;
 let bestCatchValue = 0;
 
+let baseMultiplier = 1;
+
 let strength = 10;
 
 let currentWeather = "Fair Skies";
@@ -85,12 +87,12 @@ let fishPool = [
     {fish: "Rainbow Gar",       type: "legendary", weight: 20, weather: "", minLevel: 18, minSize: 20,  maxSize: 45, minBiteTime:20, maxBiteTime: 35, evasion: 30, baseExp: 8, baseValue: 0.14,  caught: 0, minTimeWindow: "16", maxTimeWindow: "20", available: true, image: "./images/rainbow_gar.png", ftext: "Something glistens in the water...."},
     {fish: "Rainbow Bass",      type: "legendary", weight: 15, weather: "Rain", minLevel: 20, minSize: 5,  maxSize: 25, minBiteTime:17, maxBiteTime: 30, evasion: 30, baseExp: 25, baseValue: 0.12,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/rainbow_bass.png", ftext: "Something glistens in the water...."},
     {fish: "Great White",       type: "legendary", weight: 15, weather: "Stormy", minLevel: 10, minSize: 100, maxSize: 300, minBiteTime:30, maxBiteTime: 40, evasion: 50, baseExp: 1, baseValue: 0.25,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/great_white.png", ftext: "Something big awaits..."},
-    {fish: "The Ruby Dragon",   type: "legendary", weight: 15,  weather: "Fog", minLevel: 10, minSize: 150, maxSize: 500, minBiteTime:27, maxBiteTime: 33, evasion: 50, baseExp: 5, baseValue: 0.04,  caught: 0, minTimeWindow: "12", maxTimeWindow: "20", available: true, image: "./images/the_ruby_dragon.png", ftext: "A beast approaches...."},
-    {fish: "Prismatic Anchovy", type: "epic", weight: 5,  weather: "Eclipse", minLevel: 10, minSize: 4, maxSize: 15, minBiteTime:15, maxBiteTime: 17, evasion: 100, baseExp: 200, baseValue: 0.034,  caught: 0, minTimeWindow: "10", maxTimeWindow: "14", available: true, image: "./images/prismatic_anchovy.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Bass",    type: "epic", weight: 5,  weather: "Fair Skies", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:20, maxBiteTime: 25, evasion: 100, baseExp: 175, baseValue: 0.03,  caught: 0, minTimeWindow: "14", maxTimeWindow: "18", available: true, image: "./images/prismatic_bass.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Carp",    type: "epic", weight: 5,  weather: "Clear Skies", minLevel: 10, minSize: 12, maxSize: 35, minBiteTime:10, maxBiteTime: 15, evasion: 50, baseExp: 75, baseValue: 0.04,  caught: 0, minTimeWindow: "18", maxTimeWindow: "2", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Gar",     type: "epic", weight: 5,  weather: "Windy", minLevel: 10, minSize: 15, maxSize: 50, minBiteTime:30, maxBiteTime: 32, evasion: 100, baseExp: 75, baseValue: 0.03,  caught: 0, minTimeWindow: "2", maxTimeWindow: "6", available: true, image: "./images/prismatic_gar.png", ftext: "An unusual fish challenges the line..."},
-    {fish: "Prismatic Shark",   type: "epic", weight: 5,  weather: "Blizzards", minLevel: 15, minSize: 45, maxSize: 450, minBiteTime:40, maxBiteTime: 50, evasion: 150, baseExp: 10, baseValue: 0.03,  caught: 0, minTimeWindow: "6", maxTimeWindow: "10", available: true, image: "./images/prismatic_shark.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "The Ruby Dragon",   type: "legendary", weight: 10,  weather: "Fog", minLevel: 10, minSize: 150, maxSize: 500, minBiteTime:27, maxBiteTime: 33, evasion: 50, baseExp: 5, baseValue: 0.04,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/the_ruby_dragon.png", ftext: "A beast approaches...."},
+    {fish: "Prismatic Anchovy", type: "epic", weight: 5,  weather: "Eclipse", minLevel: 10, minSize: 4, maxSize: 15, minBiteTime:15, maxBiteTime: 17, evasion: 100, baseExp: 200, baseValue: 0.034,  caught: 0, minTimeWindow: "8", maxTimeWindow: "16", available: true, image: "./images/prismatic_anchovy.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Bass",    type: "epic", weight: 5,  weather: "Fair Skies", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:20, maxBiteTime: 25, evasion: 100, baseExp: 175, baseValue: 0.03,  caught: 0, minTimeWindow: "12", maxTimeWindow: "20", available: true, image: "./images/prismatic_bass.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Carp",    type: "epic", weight: 5,  weather: "Clear Skies", minLevel: 10, minSize: 12, maxSize: 35, minBiteTime:10, maxBiteTime: 15, evasion: 50, baseExp: 75, baseValue: 0.04,  caught: 0, minTimeWindow: "16", maxTimeWindow: "4", available: true, image: "./images/prismatic_carp.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Gar",     type: "epic", weight: 5,  weather: "Windy", minLevel: 10, minSize: 15, maxSize: 50, minBiteTime:30, maxBiteTime: 32, evasion: 100, baseExp: 75, baseValue: 0.03,  caught: 0, minTimeWindow: "0", maxTimeWindow: "8", available: true, image: "./images/prismatic_gar.png", ftext: "An unusual fish challenges the line..."},
+    {fish: "Prismatic Shark",   type: "epic", weight: 5,  weather: "Blizzards", minLevel: 15, minSize: 45, maxSize: 450, minBiteTime:40, maxBiteTime: 50, evasion: 150, baseExp: 10, baseValue: 0.03,  caught: 0, minTimeWindow: "4", maxTimeWindow: "12", available: true, image: "./images/prismatic_shark.png", ftext: "An unusual fish challenges the line..."},
     {fish: "Prismatic Crab",    type: "epic", weight: 5,  weather: "Heavy Rain", minLevel: 10, minSize: 5, maxSize: 20, minBiteTime:10, maxBiteTime: 20, evasion: 100, baseExp: 200, baseValue: 0.03,  caught: 0, minTimeWindow: "", maxTimeWindow: "", available: true, image: "./images/prismatic_crab.png", ftext: "An unusual fish challenges the line..."},
     {fish: "Prismatic Eel",     type: "epic", weight: 5,  weather: "Snow", minLevel: 10, minSize: 10, maxSize: 20, minBiteTime:25, maxBiteTime: 35, evasion: 100, baseExp: 150, baseValue: 0.04,  caught: 0, minTimeWindow: "12", maxTimeWindow: "14", available: true, image: "./images/prismatic_eel.png", ftext: "An unusual fish challenges the line..."},
     {fish: "Dark Matter Carp",  type: "epic", weight: 1,  weather: "", minLevel: 10, minSize: 15, maxSize: 40, minBiteTime:12, maxBiteTime: 17, evasion: 100, baseExp: 150, baseValue: 0.04,  caught: 0, minTimeWindow: "12", maxTimeWindow: "14", available: true, image: "./images/dark_matter_carp.png", ftext: "An unusual fish challenges the line.........."},
@@ -179,11 +181,11 @@ function beginReelIn (_fish, id) {
 
     setTimeout(function() { 
         fishHooked(_fish, size, id);
-    }, castTime / 5);
+    }, castTime);
 }
 
 function fishHooked (_fish, _size, id) {
-    let slipChance = (Math.random() * strength);
+    let slipChance = (Math.random() * strength + strength);
     //console.log(slipChance);
     if (slipChance < _fish.evasion)
     {
@@ -213,7 +215,7 @@ function fishHooked (_fish, _size, id) {
         mainBox.style.setProperty("background-color", type);
     }
 
-    let expGained = (_fish.baseExp * _size);
+    let expGained = (_fish.baseExp * _size) * baseMultiplier;
     userExp += Math.round(expGained);
     checkLevel();
     totalFishCaught++;
@@ -255,7 +257,7 @@ function checkAuto() {
         isFishing = true;
         setTimeout(function() { 
             startFishing();
-        }, 2000 / 5);
+        }, 2000);
     }
 }
 
@@ -264,6 +266,7 @@ function checkLevel () {
         userLevel++;
         strength += 10;
         expRequired = Math.round((expRequired + 100) * 1.1);
+        baseMultiplier += 0.1;
     }
     levelText.innerHTML = "Level: " + userLevel + " | EXP: " + userExp + " / " + expRequired;
 }
